@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  socketserver-mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB1_PASSWORD}
+    ports:
+      - "${DB1_PORT}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - db_network
+    command: >
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+
+volumes:
+  mysql_data:
+
+networks:
+  db_network:
