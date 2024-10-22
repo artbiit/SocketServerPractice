@@ -16,7 +16,6 @@ export const createResponse = (handlerId, responseCode, data = null, userId) => 
   };
 
   const buffer = Response.encode(responsePayload).finish();
-
   // 패킷 길이 정보를 포함한 버퍼 생성
   const packetLength = Buffer.alloc(config.packet.totalLength);
   packetLength.writeUInt32BE(buffer.length + config.packet.typeLength, 0); // 패킷 길이에 타입 바이트 포함
