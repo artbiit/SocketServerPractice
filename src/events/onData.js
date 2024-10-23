@@ -32,7 +32,7 @@ export const onData = (socket) => async (data) => {
           case PACKET_TYPE.PING:
             break;
           case PACKET_TYPE.NORMAL:
-            const { handlerId, sequence, payload, userId } = packetParser(packet);
+            const { handlerId, userId, payload, sequence } = packetParser(packet);
 
             const user = getUserById(userId);
             // 유저가 접속해 있는 상황에서 시퀀스 검증

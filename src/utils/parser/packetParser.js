@@ -54,6 +54,5 @@ export const packetParser = (data) => {
       `필수 필드가 누락되었습니다: ${missingFields.join(', ')}`,
     );
   }
-
   return { handlerId, userId, payload, sequence };
 };
